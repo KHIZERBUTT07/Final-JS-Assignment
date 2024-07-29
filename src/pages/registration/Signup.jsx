@@ -1,16 +1,12 @@
-import { useContext, useState } from 'react'
-import myContext from '../../context/data/myContext';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
+import myContext from '../../context/data/myContext';
 import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, fireDB } from '../../firebase/FirebaseConfig';
+
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
-
-
-
-
-
 import Loader from '../../components/loader/Loader';
+import { auth, fireDB } from '../../firebase/FirebaseConfig';
 
 function Signup() {
     const [name, setName] = useState("");
@@ -43,19 +39,17 @@ function Signup() {
             setName("");
             setEmail("");
             setPassword("");
-
             setLoading(false)
             
         } catch (error) {
             console.log(error)
-
             setLoading(false)
         }
     }
 
     return (
         <div className=' flex justify-center items-center h-screen'>
-            {loading && <Loader />}
+            {loading && <Loader/>}
             <div className=' bg-gray-800 px-10 py-10 rounded-xl '>
                 <div className="">
                     <h1 className='text-center text-white text-xl mb-4 font-bold'>Signup</h1>
